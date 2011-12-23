@@ -18,6 +18,8 @@
 #import "FBLoginDialog.h"
 #import "FBRequest.h"
 
+#import "UIAlertView+MFBlockize.h"
+
 static NSString* kDialogBaseURL = @"https://m.facebook.com/dialog/";
 static NSString* kGraphBaseURL = @"https://graph.facebook.com/";
 static NSString* kRestserverBaseURL = @"https://api.facebook.com/method/";
@@ -315,7 +317,20 @@ static void *finishedContext = @"finishedContext";
 - (void)authorize:(NSArray *)permissions {
   self.permissions = permissions;
 
-  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+#ifdef ZABBI_BETA
+    [[UIAlertView mfAnotherWithTitle:@"BETA Login"
+                             message:@"Should we login using the Facebook App or The Web?"
+                   cancelButtonTitle:nil
+                               block:nil
+          otherButtonTitlesAndBlocks:@"Facebook App", ^{
+              [self authorizeWithFBAppAuth:YES safariAuth:YES];
+          }, @"The Web", ^{
+              [self authorizeWithFBAppAuth:NO safariAuth:YES];
+          }, nil]
+     show];
+#else
+    [self authorizeWithFBAppAuth:YES safariAuth:YES];
+#endif
 }
 
 /**
