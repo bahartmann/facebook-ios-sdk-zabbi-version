@@ -133,6 +133,7 @@
  *  - the user revoked the app's permissions
  *  - the user changed his or her password
  */
-- (void)fbSessionInvalidated;
+// Jason: I've removed this because it isn't always correct
+//- (void)fbSessionInvalidated;
 
 @end
