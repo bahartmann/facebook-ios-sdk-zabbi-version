@@ -318,16 +318,20 @@ static void *finishedContext = @"finishedContext";
   self.permissions = permissions;
 
 #ifdef ZABBI_BETA
-    [[UIAlertView mfAnotherWithTitle:@"BETA Login"
-                             message:@"Should we login using the Facebook App or The Web?"
-                   cancelButtonTitle:nil
-                               block:nil
-          otherButtonTitlesAndBlocks:@"Facebook App", ^{
-              [self authorizeWithFBAppAuth:YES safariAuth:YES];
-          }, @"The Web", ^{
-              [self authorizeWithFBAppAuth:NO safariAuth:YES];
-          }, nil]
-     show];
+    #ifndef TARGET_IPHONE_SIMULATOR
+        [[UIAlertView mfAnotherWithTitle:@"BETA Login"
+                                 message:@"Should we login using the Facebook App or The Web?"
+                       cancelButtonTitle:nil
+                                   block:nil
+              otherButtonTitlesAndBlocks:@"Facebook App", ^{
+                  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+              }, @"The Web", ^{
+                  [self authorizeWithFBAppAuth:NO safariAuth:YES];
+              }, nil]
+         show];
+    #else
+        [self authorizeWithFBAppAuth:YES safariAuth:YES];
+    #endif
 #else
     [self authorizeWithFBAppAuth:YES safariAuth:YES];
 #endif
