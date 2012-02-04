@@ -326,7 +326,9 @@ static void *finishedContext = @"finishedContext";
   self.permissions = permissions;
 
 #ifdef ZABBI_BETA
-    #ifndef TARGET_IPHONE_SIMULATOR
+    #if TARGET_IPHONE_SIMULATOR
+        [self authorizeWithFBAppAuth:YES safariAuth:YES];
+    #else
         [[UIAlertView mfAnotherWithTitle:@"BETA Login"
                                  message:@"Should we login using the Facebook App or The Web?"
                        cancelButtonTitle:nil
@@ -337,8 +339,6 @@ static void *finishedContext = @"finishedContext";
                   [self authorizeWithFBAppAuth:NO safariAuth:YES];
               }, nil]
          show];
-    #else
-        [self authorizeWithFBAppAuth:YES safariAuth:YES];
     #endif
 #else
     [self authorizeWithFBAppAuth:YES safariAuth:YES];
