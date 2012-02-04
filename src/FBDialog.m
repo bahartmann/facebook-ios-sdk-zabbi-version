@@ -302,27 +302,27 @@ params   = _params;
         _webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:_webView];
         
-        UIImage* closeImage = [UIImage imageNamed:@"FBDialog.bundle/images/close.png"];
-        
-        UIColor* color = [UIColor colorWithRed:167.0/255 green:184.0/255 blue:216.0/255 alpha:1];
-        _closeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
-        [_closeButton setImage:closeImage forState:UIControlStateNormal];
-        [_closeButton setTitleColor:color forState:UIControlStateNormal];
-        [_closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-        [_closeButton addTarget:self action:@selector(cancel)
-               forControlEvents:UIControlEventTouchUpInside];
-        
-        // To be compatible with OS 2.x
-#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_2_2
-        _closeButton.font = [UIFont boldSystemFontOfSize:12];
-#else
-        _closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-#endif
-        
-        _closeButton.showsTouchWhenHighlighted = YES;
-        _closeButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin
-        | UIViewAutoresizingFlexibleBottomMargin;
-        [self addSubview:_closeButton];
+//        UIImage* closeImage = [UIImage imageNamed:@"FBDialog.bundle/images/close.png"];
+//        
+//        UIColor* color = [UIColor colorWithRed:167.0/255 green:184.0/255 blue:216.0/255 alpha:1];
+//        _closeButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+//        [_closeButton setImage:closeImage forState:UIControlStateNormal];
+//        [_closeButton setTitleColor:color forState:UIControlStateNormal];
+//        [_closeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+//        [_closeButton addTarget:self action:@selector(cancel)
+//               forControlEvents:UIControlEventTouchUpInside];
+//        
+//        // To be compatible with OS 2.x
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_2_2
+//        _closeButton.font = [UIFont boldSystemFontOfSize:12];
+//#else
+//        _closeButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+//#endif
+//        
+//        _closeButton.showsTouchWhenHighlighted = YES;
+//        _closeButton.autoresizingMask = UIViewAutoresizingFlexibleRightMargin
+//        | UIViewAutoresizingFlexibleBottomMargin;
+//        [self addSubview:_closeButton];
         
         _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
                     UIActivityIndicatorViewStyleWhiteLarge];
