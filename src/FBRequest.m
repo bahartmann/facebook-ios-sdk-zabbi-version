@@ -15,7 +15,7 @@
  */
 
 #import "FBRequest.h"
-#import "JSON.h"
+#import "JSONKit.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // global
@@ -200,7 +200,7 @@ static const NSTimeInterval kTimeoutInterval = 180.0;
         return nil;
     }
     
-    id result = [responseString JSONValue];
+    id result = [responseString objectFromJSONString];
 
     if (result == nil) {
         return responseString;
